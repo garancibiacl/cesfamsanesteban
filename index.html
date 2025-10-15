@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Salud Municipal de San Esteban - Sistema de salud comunal cercano, preventivo y digital">
+    <title>Salud Municipal de San Esteban</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'azul-vital': '#0077CC',
+                        'verde-esperanza': '#34D399',
+                        'amarillo-optimista': '#FACC15',
+                        'turquesa-digital': '#06B6D4',
+                        'cielo-suave': '#F0F9FF',
+                        'gris-marino': '#1E293B',
+                        'gris-suave': '#64748B',
+                        'exito': '#16A34A',
+                        'alerta': '#DC2626'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    borderRadius: {
+                        'xl': '12px',
+                        '2xl': '16px',
+                        '3xl': '20px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gris-marino antialiased">
+
+    <header id="header" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-azul-vital rounded-xl flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg lg:text-xl font-bold text-gris-marino leading-tight">Salud Municipal</h1>
+                        <p class="text-xs text-gris-suave">San Esteban</p>
+                    </div>
+                </div>
+
+                <nav class="hidden lg:flex items-center space-x-8" aria-label="Navegación principal">
+                    <a href="#inicio" class="nav-link text-sm font-medium text-gris-marino hover:text-azul-vital transition-colors duration-200">Inicio</a>
+                    <a href="#noticias" class="nav-link text-sm font-medium text-gris-marino hover:text-azul-vital transition-colors duration-200">Noticias y Campañas</a>
+                    <a href="#centros" class="nav-link text-sm font-medium text-gris-marino hover:text-azul-vital transition-colors duration-200">Nuestros Centros</a>
+                    <a href="#ayuda" class="nav-link text-sm font-medium text-gris-marino hover:text-azul-vital transition-colors duration-200">Trámites y Ayuda</a>
+                </nav>
+
+                <div class="flex items-center space-x-2 lg:space-x-4">
+                    <a href="https://pacientes.cesfamsanesteban.cl" 
+                       class="inline-flex items-center px-3 py-2.5 lg:px-6 lg:py-3 bg-azul-vital text-white text-base lg:text-base font-bold rounded-xl hover:bg-[#005A9C] hover:shadow-lg hover:shadow-azul-vital/30 transition-all duration-300 transform hover:scale-105"
+                       role="button"
+                       aria-label="Ir al Portal de Pacientes">
+                        <span class="hidden sm:inline">Ir al Portal Pacientes</span>
+                        <span class="sm:hidden">Portal</span>
+                        <svg class="w-5 h-5 lg:w-5 lg:h-5 ml-1 lg:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+
+                    <button id="mobile-menu-button" 
+                            class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                            aria-label="Abrir menú de navegación"
+                            aria-expanded="false"
+                            aria-controls="mobile-menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-200" role="navigation" aria-label="Menú móvil">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="#inicio" class="block px-4 py-3 rounded-lg text-gris-marino hover:bg-cielo-suave transition-colors duration-200">Inicio</a>
+                <a href="#noticias" class="block px-4 py-3 rounded-lg text-gris-marino hover:bg-cielo-suave transition-colors duration-200">Noticias y Campañas</a>
+                <a href="#centros" class="block px-4 py-3 rounded-lg text-gris-marino hover:bg-cielo-suave transition-colors duration-200">Nuestros Centros</a>
+                <a href="#ayuda" class="block px-4 py-3 rounded-lg text-gris-marino hover:bg-cielo-suave transition-colors duration-200">Trámites y Ayuda</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio">
+        
+        <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-azul-vital/10 via-cielo-suave to-white overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxMEI5ODEiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNGgydjJoLTJ2LTJ6bS0yIDJ2LTJoLTJ2Mmgyem0wLTJ2LTJoLTJ2Mmgyem0yIDB2LTJoMnYyaC0yeiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
+            
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="inline-block mb-6 px-4 py-2 bg-white rounded-full shadow-sm">
+                        <span class="text-sm font-medium text-azul-vital">🏥 Sistema de Salud Municipal</span>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gris-marino leading-tight mb-6">
+                        Salud Municipal de San Esteban: <span class="text-verde-esperanza">cercana, preventiva y digital.</span>
+                    </h2>
+                    
+                    <p class="text-lg md:text-xl text-gris-suave mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Comprometidos con tu bienestar y el de tu familia. Accede a información sobre nuestros servicios de salud, campañas preventivas y gestiona tus citas médicas desde nuestro portal digital.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="https://pacientes.cesfamsanesteban.cl" 
+                           class="inline-flex items-center px-8 py-4 bg-azul-vital text-white text-lg font-semibold rounded-2xl hover:bg-[#005A9C] hover:shadow-xl hover:shadow-azul-vital/30 transition-all duration-300 transform hover:scale-105">
+                            Ir al Portal Pacientes
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                        
+                        <a href="#centros" 
+                           class="inline-flex items-center px-8 py-4 bg-white text-verde-esperanza text-lg font-semibold rounded-2xl border-2 border-verde-esperanza hover:bg-verde-esperanza hover:text-white hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                            Conoce nuestros servicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#noticias" aria-label="Desplazarse a sección de noticias">
+                    <svg class="w-8 h-8 text-azul-vital" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <section id="noticias" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gris-marino mb-4">
+                        Mantente Informado: <span class="text-azul-vital">Noticias y Campañas</span>
+                    </h2>
+                    <p class="text-lg text-gris-suave max-w-2xl mx-auto">
+                        Conoce las últimas actualizaciones sobre programas de salud, campañas de vacunación y operativos en nuestra comunidad.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    
+                    <article class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-br from-verde-esperanza to-turquesa-digital flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-verde-esperanza/10 text-exito text-xs font-semibold rounded-full mb-3">Vacunación</span>
+                            <h3 class="text-xl font-bold text-gris-marino mb-2">Campaña de Vacunación Influenza 2025</h3>
+                            <p class="text-gris-suave mb-4 leading-relaxed">
+                                Inicia campaña de vacunación contra la influenza para grupos prioritarios. Conoce fechas y lugares de atención.
+                            </p>
+                            <a href="#" class="inline-flex items-center text-azul-vital font-semibold hover:text-turquesa-digital transition-colors duration-200">
+                                Leer más
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-br from-azul-vital to-turquesa-digital flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-azul-vital/10 text-azul-vital text-xs font-semibold rounded-full mb-3">Salud Mental</span>
+                            <h3 class="text-xl font-bold text-gris-marino mb-2">Programa de Salud Mental Comunitaria</h3>
+                            <p class="text-gris-suave mb-4 leading-relaxed">
+                                Nuevos talleres de autocuidado y bienestar emocional disponibles para toda la comunidad. Inscripciones abiertas.
+                            </p>
+                            <a href="#" class="inline-flex items-center text-azul-vital font-semibold hover:text-turquesa-digital transition-colors duration-200">
+                                Leer más
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2">
+                        <div class="h-48 bg-gradient-to-br from-amarillo-optimista to-verde-esperanza flex items-center justify-center">
+                            <svg class="w-20 h-20 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-6">
+                            <span class="inline-block px-3 py-1 bg-amarillo-optimista/10 text-yellow-600 text-xs font-semibold rounded-full mb-3">Operativo Rural</span>
+                            <h3 class="text-xl font-bold text-gris-marino mb-2">Operativo Médico en Sectores Rurales</h3>
+                            <p class="text-gris-suave mb-4 leading-relaxed">
+                                Operativo de salud integral en sectores rurales con atención médica, dental y entrega de medicamentos gratuitos.
+                            </p>
+                            <a href="#" class="inline-flex items-center text-azul-vital font-semibold hover:text-turquesa-digital transition-colors duration-200">
+                                Leer más
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="centros" class="py-20 bg-cielo-suave">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gris-marino mb-4">
+                        Nuestros <span class="text-verde-esperanza">Centros y Horarios</span>
+                    </h2>
+                    <p class="text-lg text-gris-suave max-w-2xl mx-auto">
+                        Conoce nuestras instalaciones, horarios de atención y datos de contacto para que puedas acceder a nuestros servicios.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    
+                    <div class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-verde-esperanza/10 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-verde-esperanza" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gris-marino mb-3">CESFAM San Esteban</h3>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-verde-esperanza mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">Av. Libertador Bernardo O'Higgins 123, San Esteban</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-verde-esperanza mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <p class="text-gris-suave">+56 34 249 1234</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-verde-esperanza mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">Lun-Vie: 8:00 - 17:00</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-verde-esperanza/10 text-exito font-semibold rounded-xl hover:bg-verde-esperanza hover:text-white transition-all duration-300">
+                            Ver Mapa y Horarios
+                        </a>
+                    </div>
+
+                    <div class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-alerta/10 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-alerta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gris-marino mb-3">Servicio de Urgencias</h3>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-alerta mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">Av. Libertador Bernardo O'Higgins 123, San Esteban</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-alerta mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <p class="text-gris-suave">+56 34 249 5678</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-alerta mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">24 horas / 7 días</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-alerta/10 text-alerta font-semibold rounded-xl hover:bg-alerta hover:text-white transition-all duration-300">
+                            Ver Mapa y Horarios
+                        </a>
+                    </div>
+
+                    <div class="card bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-8 transform hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-turquesa-digital/10 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-turquesa-digital" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gris-marino mb-3">Farmacia Comunal</h3>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-turquesa-digital mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">Calle Manuel Rodríguez 456, San Esteban</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-turquesa-digital mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <p class="text-gris-suave">+56 34 249 9012</p>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-turquesa-digital mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-gris-suave">Lun-Vie: 8:30 - 18:00</p>
+                            </div>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center w-full px-6 py-3 bg-turquesa-digital/10 text-turquesa-digital font-semibold rounded-xl hover:bg-[#0891B2] hover:text-white transition-all duration-300">
+                            Ver Mapa y Horarios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ayuda" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gris-marino mb-4">
+                        Trámites y <span class="text-emerald-custom">Preguntas Frecuentes</span>
+                    </h2>
+                    <p class="text-lg text-gris-suave max-w-2xl mx-auto">
+                        Encuentra respuestas rápidas a las consultas más comunes sobre nuestros servicios y el Portal de Pacientes.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl mx-auto">
+                    <div class="space-y-4">
+                        
+                        <div class="faq-item bg-white rounded-2xl shadow-md overflow-hidden">
+                            <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                                    aria-expanded="false">
+                                <span class="font-semibold text-lg text-gris-marino pr-8">¿Cómo me registro por primera vez en el Portal Pacientes?</span>
+                                <svg class="faq-icon w-6 h-6 text-emerald-custom transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-5">
+                                <p class="text-gris-suave leading-relaxed">
+                                    Para registrarte, ingresa a <a href="https://pacientes.cesfamsanesteban.cl" class="text-turquesa-digital font-medium hover:underline">pacientes.cesfamsanesteban.cl</a> y haz clic en "Crear cuenta". Necesitarás tu RUT, correo electrónico y número de teléfono. Recibirás un código de verificación por SMS para completar tu registro. Si tienes problemas, llámanos al +56 34 249 1234.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-white rounded-2xl shadow-md overflow-hidden">
+                            <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                                    aria-expanded="false">
+                                <span class="font-semibold text-lg text-gris-marino pr-8">¿Cómo puedo ver los resultados de mis exámenes?</span>
+                                <svg class="faq-icon w-6 h-6 text-emerald-custom transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-5">
+                                <p class="text-gris-suave leading-relaxed">
+                                    Una vez que inicies sesión en el Portal Pacientes, dirígete a la sección "Mis Exámenes". Ahí encontrarás todos tus resultados disponibles organizados por fecha. Puedes descargarlos en formato PDF o compartirlos directamente con tu médico tratante desde la plataforma.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-white rounded-2xl shadow-md overflow-hidden">
+                            <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                                    aria-expanded="false">
+                                <span class="font-semibold text-lg text-gris-marino pr-8">Olvidé mi contraseña, ¿cómo la recupero?</span>
+                                <svg class="faq-icon w-6 h-6 text-emerald-custom transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-5">
+                                <p class="text-gris-suave leading-relaxed">
+                                    En la página de inicio de sesión, haz clic en "¿Olvidaste tu contraseña?". Ingresa tu RUT y recibirás un enlace de recuperación en tu correo electrónico registrado. El enlace será válido por 24 horas. Si no recibes el correo, verifica tu carpeta de spam o comunícate con nuestro soporte técnico.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-white rounded-2xl shadow-md overflow-hidden">
+                            <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                                    aria-expanded="false">
+                                <span class="font-semibold text-lg text-gris-marino pr-8">¿Mis datos están seguros en el portal?</span>
+                                <svg class="faq-icon w-6 h-6 text-emerald-custom transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-5">
+                                <p class="text-gris-suave leading-relaxed">
+                                    Absolutamente. Utilizamos encriptación de nivel bancario (SSL/TLS) para proteger toda tu información. Cumplimos con la Ley 19.628 de Protección de Datos Personales y las normativas del Ministerio de Salud. Nunca compartimos tu información con terceros sin tu consentimiento expreso. Puedes revisar nuestra política de privacidad completa en el portal.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-white rounded-2xl shadow-md overflow-hidden">
+                            <button class="faq-question w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                                    aria-expanded="false">
+                                <span class="font-semibold text-lg text-gris-marino pr-8">¿Puedo agendar horas médicas desde el Portal?</span>
+                                <svg class="faq-icon w-6 h-6 text-emerald-custom transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-5">
+                                <p class="text-gris-suave leading-relaxed">
+                                    Sí, puedes agendar, reprogramar y cancelar tus horas médicas directamente desde el Portal Pacientes. Disponemos de agenda online para medicina general, especialidades y procedimientos. Recibirás confirmación por correo y SMS, además de recordatorios 24 horas antes de tu cita.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <p class="text-gris-suave mb-4">¿No encontraste lo que buscabas?</p>
+                        <a href="#" class="inline-flex items-center text-emerald-custom font-semibold hover:text-turquesa-digital transition-colors duration-200">
+                            Ver política de privacidad completa
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gris-marino text-white py-12">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-azul-vital rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Salud Municipal</h3>
+                            <p class="text-sm text-gray-300">San Esteban</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Comprometidos con tu salud y bienestar. Sistema de salud municipal cercano, preventivo y digital al servicio de nuestra comunidad.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-azul-vital transition-colors duration-200" aria-label="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-azul-vital transition-colors duration-200" aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-azul-vital transition-colors duration-200" aria-label="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Enlaces Útiles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-300 hover:text-azul-vital transition-colors duration-200">Inicio</a></li>
+                        <li><a href="#noticias" class="text-gray-300 hover:text-azul-vital transition-colors duration-200">Noticias y Campañas</a></li>
+                        <li><a href="#centros" class="text-gray-300 hover:text-azul-vital transition-colors duration-200">Nuestros Centros</a></li>
+                        <li><a href="#ayuda" class="text-gray-300 hover:text-azul-vital transition-colors duration-200">Trámites y Ayuda</a></li>
+                        <li><a href="https://pacientes.cesfamsanesteban.cl" class="text-gray-300 hover:text-azul-vital transition-colors duration-200">Portal Pacientes</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contacto Rápido</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-verde-esperanza mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-gray-300 text-sm">Av. Libertador Bernardo O'Higgins 123<br>San Esteban, Región de Valparaíso</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-verde-esperanza mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span class="text-gray-300 text-sm">+56 34 249 1234</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-verde-esperanza mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-gray-300 text-sm">contacto@cesfamsanesteban.cl</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-verde-esperanza mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path>
+                            </svg>
+                            <span class="text-gray-300 text-sm">WhatsApp: +56 9 1234 5678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Salud Municipal de San Esteban. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
