@@ -5,28 +5,58 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('header');
 
     if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
+        const openMobileMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('is-locked');
+        };
+
+        const closeMobileMenu = () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('is-locked');
+        };
+
+        mobileMenuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
             const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-            
-            const icon = mobileMenuButton.querySelector('svg');
-            if (!isExpanded) {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            if (isExpanded) {
+                closeMobileMenu();
             } else {
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+                openMobileMenu();
             }
         });
 
-        const mobileLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+        const mobileLinks = mobileMenu.querySelectorAll('a[href]');
         mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuButton.querySelector('svg');
-                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            link.addEventListener('click', () => {
+                closeMobileMenu();
             });
+        });
+
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                closeMobileMenu();
+                mobileMenuButton.focus();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                closeMobileMenu();
+            }
         });
     }
 
@@ -55,36 +85,135 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        
-        if (question && answer) {
-            question.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        const otherQuestion = otherItem.querySelector('.faq-question');
-                        const otherAnswer = otherItem.querySelector('.faq-answer');
-                        otherQuestion.setAttribute('aria-expanded', 'false');
-                        otherAnswer.classList.add('hidden');
-                    }
-                });
-                
-                this.setAttribute('aria-expanded', !isExpanded);
-                answer.classList.toggle('hidden');
-            });
+    const faqCards = document.querySelectorAll('.faq-card');
+    const faqSearchInput = document.getElementById('faq-search');
+    const faqChips = document.querySelectorAll('[data-faq-chip]');
 
-            question.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
+    function closeOtherFaqs(current) {
+        faqCards.forEach(card => {
+            if (card !== current) {
+                const trigger = card.querySelector('.faq-card__trigger');
+                const panel = card.querySelector('.faq-card__panel');
+                if (trigger && panel) {
+                    trigger.setAttribute('aria-expanded', 'false');
+                    panel.classList.add('hidden');
+                    panel.classList.remove('faq-card__panel--open');
                 }
-            });
+            }
+        });
+    }
+
+    faqCards.forEach(card => {
+        const trigger = card.querySelector('.faq-card__trigger');
+        const panel = card.querySelector('.faq-card__panel');
+
+        if (!trigger || !panel) {
+            return;
         }
+
+        trigger.addEventListener('click', () => {
+            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+            closeOtherFaqs(isExpanded ? null : card);
+            trigger.setAttribute('aria-expanded', String(!isExpanded));
+            if (isExpanded) {
+                panel.classList.add('hidden');
+                panel.classList.remove('faq-card__panel--open');
+            } else {
+                panel.classList.remove('hidden');
+                // trigger reflow for animation
+                void panel.offsetWidth;
+                panel.classList.add('faq-card__panel--open');
+            }
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                trigger.click();
+            }
+        });
     });
+
+    function filterFaqs(value) {
+        const query = value.trim().toLowerCase();
+        faqCards.forEach(card => {
+            const keywords = card.dataset.keywords || '';
+            const text = card.textContent || '';
+            const matches = !query || keywords.toLowerCase().includes(query) || text.toLowerCase().includes(query);
+            card.style.display = matches ? '' : 'none';
+        });
+    }
+
+    if (faqSearchInput) {
+        faqSearchInput.addEventListener('input', (event) => {
+            filterFaqs(event.target.value);
+        });
+    }
+
+    faqChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const term = chip.getAttribute('data-faq-chip') || '';
+            if (faqSearchInput) {
+                faqSearchInput.value = term;
+                faqSearchInput.focus();
+                filterFaqs(term);
+            }
+        });
+    });
+
+    const footerChatButton = document.querySelector('.footer-chat__button');
+    const footerChatPanel = document.getElementById('footer-chat-panel');
+
+    if (footerChatButton && footerChatPanel) {
+        const showChatPanel = () => {
+            footerChatPanel.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                footerChatPanel.classList.add('footer-chat__panel--visible');
+            });
+            footerChatButton.setAttribute('aria-expanded', 'true');
+        };
+
+        const hideChatPanel = () => {
+            footerChatPanel.classList.remove('footer-chat__panel--visible');
+            footerChatButton.setAttribute('aria-expanded', 'false');
+            const handleTransitionEnd = (event) => {
+                if (event.propertyName === 'opacity') {
+                    if (footerChatButton.getAttribute('aria-expanded') === 'false') {
+                        footerChatPanel.classList.add('hidden');
+                    }
+                    footerChatPanel.removeEventListener('transitionend', handleTransitionEnd);
+                }
+            };
+            footerChatPanel.addEventListener('transitionend', handleTransitionEnd);
+        };
+
+        const toggleChatPanel = () => {
+            const isExpanded = footerChatButton.getAttribute('aria-expanded') === 'true';
+            if (isExpanded) {
+                hideChatPanel();
+            } else {
+                showChatPanel();
+            }
+        };
+
+        footerChatButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleChatPanel();
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!footerChatPanel.classList.contains('hidden') && !footerChatPanel.contains(event.target) && event.target !== footerChatButton && !footerChatButton.contains(event.target)) {
+                hideChatPanel();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && footerChatButton.getAttribute('aria-expanded') === 'true') {
+                hideChatPanel();
+                footerChatButton.focus();
+            }
+        });
+    }
 
     let lastScrollTop = 0;
     const headerElement = document.getElementById('header');
@@ -98,11 +227,12 @@ document.addEventListener('DOMContentLoaded', function() {
             headerElement.style.transform = 'translateY(0)';
         }
         
-        if (scrollTop > 50) {
-            headerElement.classList.add('shadow-lg');
-        } else {
-            headerElement.classList.remove('shadow-lg');
-            headerElement.classList.add('shadow-md');
+        if (headerElement) {
+            if (scrollTop > 50) {
+                headerElement.classList.add('navbar--scrolled');
+            } else {
+                headerElement.classList.remove('navbar--scrolled');
+            }
         }
         
         lastScrollTop = scrollTop;
@@ -121,9 +251,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
-                    link.classList.remove('text-azul-vital');
+                    link.classList.remove('navbar__link--active', 'text-azul-vital');
+                    link.removeAttribute('aria-current');
                     if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('text-azul-vital');
+                        link.classList.add('navbar__link--active');
+                        link.setAttribute('aria-current', 'page');
                     }
                 });
             }
@@ -139,6 +271,25 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         });
     });
+
+    const revealItems = document.querySelectorAll('.reveal-on-scroll');
+    if ('IntersectionObserver' in window && revealItems.length > 0) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        revealItems.forEach(item => observer.observe(item));
+    } else {
+        revealItems.forEach(item => item.classList.add('reveal-visible'));
+    }
 
     console.log('🏥 Salud Municipal de San Esteban - Sitio cargado correctamente');
 });

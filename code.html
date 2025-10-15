@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salud Municipal de San Esteban</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Nunito+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2B9ED8",
+                        "secondary": "#34D399",
+                        "accent": "#FACC15",
+                        "background-light": "#FFFFFF",
+                        "background-secondary-light": "#F0F9FF",
+                        "text-primary": "#1E293B",
+                        "text-secondary": "#64748B",
+                        "success": "#16A34A",
+                        "error": "#DC2626",
+                        "background-dark": "#111b21", // Placeholder for dark mode
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem", // 16px
+                        "2xl": "1.25rem", // 20px
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft-drop': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'soft-drop-hover': '0 8px 20px rgba(43, 158, 216, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-body text-text-primary">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between h-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">Portal Salud San Esteban</span>
+<h2 class="text-text-primary text-xl font-bold font-display tracking-tighter">Salud San Esteban</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-text-secondary hover:text-primary text-sm font-bold transition-colors duration-300" href="#inicio">Inicio</a>
+<a class="text-text-secondary hover:text-primary text-sm font-bold transition-colors duration-300" href="#noticias">Noticias y Campañas</a>
+<a class="text-text-secondary hover:text-primary text-sm font-bold transition-colors duration-300" href="#centros">Nuestros Centros</a>
+<a class="text-text-secondary hover:text-primary text-sm font-bold transition-colors duration-300" href="#ayuda">Trámites y Ayuda</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-text-primary text-sm font-bold tracking-wide shadow-soft-drop hover:shadow-soft-drop-hover transition-shadow duration-300">
+<span class="truncate">Ir al Portal Pacientes</span>
+</button>
+<button class="md:hidden flex items-center justify-center size-10 rounded-full hover:bg-background-secondary-light">
+<span class="material-symbols-outlined text-text-primary">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<!-- Hero Section -->
+<section class="relative" id="inicio">
+<div class="container mx-auto px-4 py-20 md:py-32">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col gap-6 text-center md:text-left">
+<h1 class="text-text-primary text-4xl md:text-5xl font-black font-display leading-tight tracking-tighter">
+                                    Salud Municipal de San Esteban: cercana, preventiva y digital
+                                </h1>
+<p class="text-text-secondary text-lg leading-relaxed">
+                                    Te damos la bienvenida a nuestro portal digital. Aquí encontrarás toda la información sobre nuestros servicios, centros de salud y campañas de prevención.
+                                </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
+<button class="flex min-w-[200px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-soft-drop hover:shadow-soft-drop-hover transform hover:-translate-y-1 transition-all duration-300">
+<span class="truncate">Ir al Portal Pacientes</span>
+</button>
+<button class="flex min-w-[200px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-8 bg-secondary text-white text-base font-bold shadow-soft-drop hover:shadow-soft-drop-hover transform hover:-translate-y-1 transition-all duration-300">
+<span class="truncate">Conoce nuestros servicios</span>
+</button>
+</div>
+</div>
+<div class="relative min-h-[300px] md:min-h-[450px]">
+<div class="absolute inset-0 bg-cover bg-center rounded-2xl shadow-soft-drop" data-alt="A doctor is showing a patient something on a tablet computer." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5Cbvx7nXAU3O8EXUAKlOL1ROa98cdj5cSYA6QFSgBE1DPhVHW2_OQ-bxb3jstx65plKX569GIaOQfneSwSSvudKlYtS_DM4K2SmXUseWJVaHJSwMLEdvYvOsCqovkEIHb77t6VB05ATN2LtKlgtWf67huO5NqMCcrpjaSeXKSJb-ZYbgDGTtT2oQOmxgx96zC04fhDACGvIqm497ukTjsHF3nRsaYOwEeXRDhagouf20vCxMDwcmbLLXtWGdvKzwdt7j8KwzWUYk");'></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Noticias y Campañas Section -->
+<section class="bg-background-secondary-light py-20" id="noticias">
+<div class="container mx-auto px-4">
+<h2 class="text-text-primary text-3xl font-bold font-display tracking-tight text-center mb-12">Noticias y Campañas</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="flex flex-col gap-4 rounded-2xl bg-background-light shadow-soft-drop hover:shadow-soft-drop-hover hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Vaccine vial and syringe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbEFa7YNZSeH82ta1e6S4oVgRaHi4IDNup3ZilUIsiycOPpWo5wFoi8zv57fhoxPnwbw0Trmdr6KwfvhE1yL65-HXPot1D0pP0F2-t-t8YKQQvriMUTRRhV0XOeoaW_dk_7OxYem2pP7gWSlz_2zvKqofBRRWUFvHB-jizVxkWxhvm9AIzRbKFoFGHKnkcXo8f4_Y2tyR5279f5A0ZStqxbqPfhGCzzn-zOl1vuD4xmS9pEGeKJzwTjsZfmpjxUrDeOyygMKpkQlg");'></div>
+<div class="flex flex-col flex-1 justify-between p-6 pt-0 gap-4">
+<div>
+<p class="text-primary text-sm font-bold mb-1">CAMPAÑA</p>
+<p class="text-text-primary text-xl font-bold font-display leading-tight">Campaña de Vacunación Invierno 2024</p>
+<p class="text-text-secondary text-base font-normal leading-normal mt-2">Revisa las fechas y lugares de vacunación para proteger tu salud y la de tu familia.</p>
+</div>
+<button class="w-full mt-4 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-background-secondary-light text-primary text-sm font-bold transition-colors duration-300 hover:bg-primary/20">
+<span class="truncate">Leer más</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-2xl bg-background-light shadow-soft-drop hover:shadow-soft-drop-hover hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="A group of seniors participating in a nutrition workshop." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAKJzT-oJzdHRPKt6DaMCmiHoZ4YeHIEIM4fFjDZFBHZzeh6jck7GexyvOQx6vni-OD8l8deFgQMhb-G5TOr99HwtGU3RZeDxqumnDxPgMqQ-ipa6XTolh3srztbH1NIn7E3iWIXgmQ9hudehp1yuW9d4xOhC5OEJNHD1diRyh4WJ1XLgODjyOFl0IshJDBe_VRlJL4A4aqc3rwl8z5tvKgH8RNq6LEkdC8OvvrBuQcNQdBDmmZqp06nTqu_1L4GdBDo7NArKIZPo");'></div>
+<div class="flex flex-col flex-1 justify-between p-6 pt-0 gap-4">
+<div>
+<p class="text-secondary text-sm font-bold mb-1">TALLER</p>
+<p class="text-text-primary text-xl font-bold font-display leading-tight">Nuevo Taller de Nutrición para Adultos Mayores</p>
+<p class="text-text-secondary text-base font-normal leading-normal mt-2">Inscríbete en nuestro nuevo taller gratuito para aprender a comer de forma rica y saludable.</p>
+</div>
+<button class="w-full mt-4 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-background-secondary-light text-primary text-sm font-bold transition-colors duration-300 hover:bg-primary/20">
+<span class="truncate">Leer más</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-2xl bg-background-light shadow-soft-drop hover:shadow-soft-drop-hover hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Exterior view of a modern clinic at dusk" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4z6Bm2C0ucm4-ar8DNY5d9EAWKr2QbfdnCiQoGieHBFOEvm2VQ91UsuTb9ADnRGxGIKsKHzMhQEb1FHWZK1L8UlhZQd7x5HoNQBSWS8Whuaasfl1BJVRwiEz_bJzBzUW37wFWxXitxvBO0i0MB2JJNsSdl67IhwD9XuMSpV9pqz_eUyGtRh74iG_PIF2H9L-eRjzh-cC7J4Xrs2EUL_S1Zg_8tlgnKaSt0EyR-pfl21FN8XoHKaAJFPJXaIXNPjlDDdsuT_12ETs");'></div>
+<div class="flex flex-col flex-1 justify-between p-6 pt-0 gap-4">
+<div>
+<p class="text-accent text-sm font-bold mb-1">AVISO</p>
+<p class="text-text-primary text-xl font-bold font-display leading-tight">Extensión de Horario en CESFAM San Esteban</p>
+<p class="text-text-secondary text-base font-normal leading-normal mt-2">Ahora puedes atenderte en un horario extendido para tu mayor comodidad y acceso.</p>
+</div>
+<button class="w-full mt-4 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-background-secondary-light text-primary text-sm font-bold transition-colors duration-300 hover:bg-primary/20">
+<span class="truncate">Leer más</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nuestros Centros de Salud Section -->
+<section class="py-20" id="centros">
+<div class="container mx-auto px-4">
+<h2 class="text-text-primary text-3xl font-bold font-display tracking-tight text-center mb-12">Nuestros Centros de Salud</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="rounded-2xl bg-background-secondary-light p-8 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">medical_services</span>
+<h3 class="text-text-primary text-xl font-bold font-display mb-2">CESFAM San Esteban</h3>
+<p class="text-text-secondary">Av. Alessandri 123, San Esteban</p>
+<p class="text-text-secondary">Tel: +56 9 1234 5678</p>
+<p class="text-text-secondary font-bold mt-2">L-V: 08:00 - 20:00</p>
+<button class="mt-6 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white text-primary text-sm font-bold shadow-soft-drop hover:bg-primary/10 transition-colors duration-300">
+<span>Ver Mapa y Horarios</span>
+</button>
+</div>
+<div class="rounded-2xl bg-background-secondary-light p-8 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-error text-5xl mb-4">emergency</span>
+<h3 class="text-text-primary text-xl font-bold font-display mb-2">Servicio de Urgencia Rural (SUR)</h3>
+<p class="text-text-secondary">El Cobre 456, San Esteban</p>
+<p class="text-text-secondary">Tel: +56 9 8765 4321</p>
+<p class="text-text-secondary font-bold mt-2">24 horas / 7 días</p>
+<button class="mt-6 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white text-primary text-sm font-bold shadow-soft-drop hover:bg-primary/10 transition-colors duration-300">
+<span>Ver Mapa y Horarios</span>
+</button>
+</div>
+<div class="rounded-2xl bg-background-secondary-light p-8 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-secondary text-5xl mb-4">vaccines</span>
+<h3 class="text-text-primary text-xl font-bold font-display mb-2">Farmacia Comunal</h3>
+<p class="text-text-secondary">Calle Central 789, San Esteban</p>
+<p class="text-text-secondary">Tel: +56 9 5555 4444</p>
+<p class="text-text-secondary font-bold mt-2">L-V: 09:00 - 18:00</p>
+<button class="mt-6 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white text-primary text-sm font-bold shadow-soft-drop hover:bg-primary/10 transition-colors duration-300">
+<span>Ver Mapa y Horarios</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="bg-background-secondary-light py-20" id="ayuda">
+<div class="container mx-auto px-4 max-w-3xl">
+<h2 class="text-text-primary text-3xl font-bold font-display tracking-tight text-center mb-12">Trámites y Ayuda</h2>
+<div class="space-y-4">
+<details class="group bg-white p-6 rounded-2xl shadow-soft-drop" open="">
+<summary class="flex items-center justify-between cursor-pointer font-bold font-display text-lg text-text-primary list-none">
+                                    ¿Cómo inscribirme en el CESFAM?
+                                    <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-text-secondary mt-4">Para inscribirte, debes acercarte a nuestro CESFAM con tu cédula de identidad, un comprobante de domicilio y tu carnet de FONASA. Nuestro personal te guiará en el proceso.</p>
+</details>
+<details class="group bg-white p-6 rounded-2xl shadow-soft-drop">
+<summary class="flex items-center justify-between cursor-pointer font-bold font-display text-lg text-text-primary list-none">
+                                    ¿Qué necesito para retirar medicamentos?
+                                    <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-text-secondary mt-4">Para retirar medicamentos, debes presentar tu receta médica vigente y tu cédula de identidad en nuestra Farmacia Comunal.</p>
+</details>
+<details class="group bg-white p-6 rounded-2xl shadow-soft-drop">
+<summary class="flex items-center justify-between cursor-pointer font-bold font-display text-lg text-text-primary list-none">
+                                    ¿Dónde encuentro la política de privacidad?
+                                    <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="text-text-secondary mt-4">Nuestra política de privacidad está disponible en el pie de página de este sitio web, o puedes solicitar una copia impresa en nuestros centros de salud.</p>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-text-primary text-white">
+<div class="container mx-auto px-4 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div>
+<h3 class="font-bold font-display text-xl mb-4">Salud San Esteban</h3>
+<p class="text-gray-300 text-sm">Cuidando la salud de nuestra comunidad con un servicio cercano, preventivo y de calidad.</p>
+</div>
+<div>
+<h3 class="font-bold font-display text-xl mb-4">Enlaces Útiles</h3>
+<ul class="space-y-2 text-sm">
+<li><a class="text-gray-300 hover:text-white transition-colors" href="#">Portal de Transparencia</a></li>
+<li><a class="text-gray-300 hover:text-white transition-colors" href="#">Ministerio de Salud (MINSAL)</a></li>
+<li><a class="text-gray-300 hover:text-white transition-colors" href="#">FONASA</a></li>
+<li><a class="text-gray-300 hover:text-white transition-colors" href="#">Política de Privacidad</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold font-display text-xl mb-4">Contacto Rápido</h3>
+<ul class="space-y-2 text-sm text-gray-300">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-base mt-1">location_on</span>Av. Alessandri 123, San Esteban</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-base mt-1">call</span>+56 9 1234 5678</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-base mt-1">email</span>contacto@saludsanesteban.cl</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-12 pt-6 text-center text-xs text-gray-400">
+<p>© 2024 Salud Municipal de San Esteban. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
