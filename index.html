@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Salud Municipal de San Esteban - Sistema de salud comunal cercano, preventivo y digital">
+    <title>Salud Municipal de San Esteban</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'azul-vital': '#0077CC',
+                        'verde-esperanza': '#34D399',
+                        'amarillo-optimista': '#FACC15',
+                        'turquesa-digital': '#06B6D4',
+                        'cielo-suave': '#F0F9FF',
+                        'gris-marino': '#1E293B',
+                        'gris-suave': '#64748B',
+                        'exito': '#16A34A',
+                        'alerta': '#DC2626'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    borderRadius: {
+                        'xl': '12px',
+                        '2xl': '16px',
+                        '3xl': '20px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gris-marino antialiased">
+
+        <header id="header" class="navbar">
+        <div class="navbar__container">
+            <a href="#inicio" class="navbar__brand" aria-label="Portal Salud San Esteban">
+                <span class="navbar__logo" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 4l-4.8 4.8A9.2 9.2 0 0010 20.6L16 26l6-5.4A9.2 9.2 0 0020.8 8.8L16 4z"/>
+                    </svg>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-title">Portal Salud</span>
+                    <span class="navbar__brand-subtitle">San Esteban</span>
+                </span>
+            </a>
+
+            <nav class="navbar__desktop" aria-label="Navegación principal">
+                <ul class="navbar__menu" role="list">
+                    <li><a href="#inicio" class="nav-link navbar__link">Inicio</a></li>
+                    <li><a href="#noticias" class="nav-link navbar__link">Noticias y Campañas</a></li>
+                    <li><a href="#centros" class="nav-link navbar__link">Nuestros Centros</a></li>
+                    <li><a href="#ayuda" class="nav-link navbar__link">Trámites y Ayuda</a></li>
+                </ul>
+            </nav>
+
+            <div class="navbar__actions">
+                <a href="https://pacientes.cesfamsanesteban.cl"
+                   class="navbar__btn navbar__btn--primary"
+                   aria-label="Ir al Portal de Pacientes">
+                    Portal Pacientes
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
+                    </svg>
+                </a>
+             <button id="mobile-menu-button"
+                        class="navbar__toggle"
+                        aria-label="Abrir menú de navegación"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu">
+                    <span class="sr-only">Abrir menú</span>
+                    <span class="navbar__toggle-box" aria-hidden="true">
+                        <span class="navbar__toggle-line"></span>
+                        <span class="navbar__toggle-line"></span>
+                        <span class="navbar__toggle-line"></span>
+                    </span>
+                </button>
+            </div> 
+        </div>
+
+        <div id="mobile-menu"
+             class="navbar__mobile hidden"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Menú de navegación en dispositivos móviles">
+            <div class="navbar__mobile-panel">
+                <nav class="navbar__mobile-nav" aria-label="Navegación móvil">
+                    <ul class="navbar__mobile-list" role="list">
+                        <li><a href="#inicio" class="nav-link navbar__mobile-link">Inicio</a></li>
+                        <li><a href="#noticias" class="nav-link navbar__mobile-link">Noticias y Campañas</a></li>
+                        <li><a href="#centros" class="nav-link navbar__mobile-link">Nuestros Centros</a></li>
+                        <li><a href="#ayuda" class="nav-link navbar__mobile-link">Trámites y Ayuda</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar__mobile-footer">
+                    <a href="https://pacientes.cesfamsanesteban.cl"
+                       class="navbar__mobile-cta"
+                       aria-label="Ir al Portal de Pacientes desde el menú móvil">
+                        Portal Pacientes
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <section class="relative isolate overflow-hidden bg-gradient-to-br from-cielo-suave via-white to-azul-vital/10 pt-28 pb-24">
+            <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+                <div class="absolute -top-32 right-16 h-80 w-80 rounded-full bg-turquesa-digital/20 blur-3xl animate-float-slow"></div>
+                <div class="absolute bottom-0 left-1/2 h-96 w-[120%] -translate-x-1/2 bg-[radial-gradient(circle_at_center,_rgba(52,211,153,0.25)_0%,_transparent_60%)] animate-gradient-pan"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,119,204,0.08),transparent_60%)]"></div>
+            </div>
+
+            <div class="container relative z-10 mx-auto px-4 lg:px-8">
+                <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
+                    <header class="text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-azul-vital shadow-sm ring-1 ring-white/40">
+                            <span class="h-2 w-2 rounded-full bg-verde-esperanza animate-pulse"></span>
+                            Atención primaria conectada contigo
+                        </span>
+                        <h1 class="mt-6 text-4xl font-bold tracking-tight text-gris-marino md:text-5xl xl:text-6xl">
+                            Tu salud, <span class="bg-gradient-to-r from-azul-vital to-verde-esperanza bg-clip-text text-transparent">siempre acompañada</span>.
+                        </h1>
+                        <p class="mt-6 max-w-2xl text-lg text-gris-suave md:text-xl lg:max-w-xl">
+                            Agenda controles, accede a tu historial y recibe recordatorios preventivos sin filas ni esperas. Nos acercamos a tu hogar con una gestión digital y humana.
+                        </p>
+                        <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                            <a href="https://pacientes.cesfamsanesteban.cl"
+                               class="inline-flex items-center justify-center rounded-2xl bg-azul-vital px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-azul-vital/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#005A9C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-azul-vital">
+                                Ir al Portal Pacientes
+                                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
+                                </svg>
+                            </a>
+                            <a href="#centros"
+                               class="inline-flex items-center justify-center rounded-2xl border-2 border-verde-esperanza px-8 py-4 text-lg font-semibold text-verde-esperanza transition-all duration-300 hover:bg-verde-esperanza hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-esperanza">
+                                Conoce nuestros centros
+                            </a>
+                        </div>
+                        <dl class="mt-8 flex flex-col gap-4 text-sm text-gris-suave sm:flex-row sm:items-center">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amarillo-optimista/20 text-amarillo-optimista">★</span>
+                                <div>
+                                    <dt class="font-semibold text-gris-marino">94% satisfacción</dt>
+                                    <dd>Encuesta 2024 a usuarios CESFAM.</dd>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-verde-esperanza/20 text-verde-esperanza">✓</span>
+                                <div>
+                                    <dt class="font-semibold text-gris-marino">Atención 24/7</dt>
+                                    <dd>Urgencias y teleconsultas integradas.</dd>
+                                </div>
+                            </div>
+                        </dl>
+                    </header>
+
+                    <figure class="relative">
+                        <div class="group relative overflow-hidden rounded-3xl bg-white/85 p-6 shadow-xl ring-1 ring-azul-vital/10 backdrop-blur">
+                            <img src="/img/hero-equipo-salud.webp"
+                                 alt="Equipo de salud municipal saludando a la comunidad"
+                                 class="w-full rounded-2xl object-cover transition-transform duration-500 group-hover:scale-105"
+                                 loading="lazy">
+                            <figcaption class="mt-4 text-sm text-gris-suave">
+                                Atención cercana con enfoque preventivo y digital.
+                            </figcaption>
+                        </div>
+                        <button type="button"
+                                class="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-azul-vital shadow-lg backdrop-blur transition hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-azul-vital"
+                                aria-label="Reproducir video institucional">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5v14l11-7z"></path>
+                            </svg>
+                        </button>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
+                <a href="#noticias"
+                   class="inline-flex items-center gap-2 text-sm font-semibold text-azul-vital transition hover:text-turquesa-digital focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-azul-vital"
+                   aria-label="Desplazarse a la sección de noticias">
+                    Desplázate para ver novedades
+                    <span class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-azul-vital shadow-md">
+                        <svg class="h-5 w-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7m7 7V3"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <section id="noticias" class="relative bg-white py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <header class="mx-auto mb-16 max-w-3xl text-center">
+                    <span class="inline-flex items-center gap-2 rounded-full bg-azul-vital/5 px-4 py-2 text-sm font-semibold text-azul-vital">
+                        <span aria-hidden="true" class="h-2 w-2 rounded-full bg-verde-esperanza animate-pulse"></span>
+                        Noticias y Campañas
+                    </span>
+                    <h2 class="mt-6 text-3xl font-bold text-gris-marino md:text-4xl lg:text-5xl">
+                        Mantente al día con la salud municipal
+                    </h2>
+                    <p class="mt-4 text-lg text-gris-suave">
+                        Información relevante sobre actividades preventivas, programas comunitarios y servicios disponibles en San Esteban.
+                    </p>
+                </header>
+
+                <div class="news-grid">
+                    <!-- Noticia Destacada -->
+                    <article class="news-hero-card">
+                        <img src="/img/noticia-salud-comunitaria.webp"
+                             alt="Profesionales de salud atendiendo a vecinas en operativo comunitario"
+                             class="news-card__image">
+                        <div class="news-card__content">
+                            <span class="inline-block mb-2 text-sm font-semibold uppercase tracking-wider text-white/90">
+                                Programa destacado
+                            </span>
+                            <time datetime="2025-04-18" class="text-sm text-white/80">18 abril 2025</time>
+                            <h3 class="news-card__title text-white text-2xl md:text-3xl lg:text-4xl">
+                                Nuevo plan de rondas médicas rurales refuerza la prevención en los sectores altos
+                            </h3>
+                            <p class="news-card__excerpt text-white/90">
+                                Equipos multidisciplinarios visitarán semanalmente las localidades rurales para realizar controles crónicos, vacunación y educación en autocuidado.
+                            </p>
+                            <a href="#" class="news-card__link text-white hover:text-white/80">
+                                Leer noticia completa
+                                <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 1 -->
+                    <article class="news-card">
+                        <div class="news-card__media">
+                            <img src="/images/noticia-vacunacion-invierno.png"
+                                 alt="Enfermera vacunando a adulto mayor en centro de salud"
+                                 class="news-card__image"
+                                 loading="lazy">
+                        </div>
+                        <div class="news-card__content">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-azul-vital">Vacunación</span>
+                                <time datetime="2025-04-12" class="text-sm text-gris-suave">12 abr 2025</time>
+                            </div>
+                            <h3 class="news-card__title">Refuerzo de campaña influenza 2025 para personas mayores y niños</h3>
+                            <p class="news-card__excerpt">
+                                Extensión de horarios y operativos móviles para asegurar cobertura en zonas rurales y urbanas.
+                            </p>
+                            <a href="#" class="news-card__link">Leer más</a>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 2 -->
+                    <article class="news-card">
+                        <div class="news-card__media">
+                            <img src="/images/noticia-salud-mental.png"
+                                 alt="Grupo de personas participando en taller de bienestar emocional"
+                                 class="news-card__image"
+                                 loading="lazy">
+                        </div>
+                        <div class="news-card__content">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-verde-esperanza">Salud mental</span>
+                                <time datetime="2025-04-05" class="text-sm text-gris-suave">05 abr 2025</time>
+                            </div>
+                            <h3 class="news-card__title">Nuevos talleres de apoyo emocional para cuidadores y familias</h3>
+                            <p class="news-card__excerpt">
+                                Inscripciones abiertas para sesiones grupales con psicólogos y terapeutas ocupacionales.
+                            </p>
+                            <a href="#" class="news-card__link">Leer más</a>
+                        </div>
+                    </article>
+                    <!-- Noticia 3 -->
+                    <article class="news-card">
+                        <div class="news-card__media">
+                            <img src="/images/noticia-operativo-rural.png"
+                                 alt="Equipo de salud municipal atendiendo a una familia en sector rural"
+                                 class="news-card__image"
+                                 loading="lazy">
+                        </div>
+                        <div class="news-card__content">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-turquesa-digital">Operativo rural</span>
+                                <time datetime="2025-03-28" class="text-sm text-gris-suave">28 mar 2025</time>
+                            </div>
+                            <h3 class="news-card__title">Cesfam móvil suma consultas nutricionales y dental preventiva</h3>
+                            <p class="news-card__excerpt">
+                                El equipo itinerante incorpora nuevas prestaciones para acompañar el bienestar integral en localidades alejadas.
+                            </p>
+                            <a href="#" class="news-card__link">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="#" class="inline-flex items-center justify-center rounded-full bg-azul-vital px-8 py-4 text-base font-semibold text-white shadow-lg shadow-azul-vital/20 transition hover:bg-azul-vital/90 hover:shadow-xl hover:shadow-azul-vital/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-azul-vital">
+                        Ver más noticias
+                        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="centros" class="py-20 bg-cielo-suave">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gris-marino mb-4">
+                        Nuestros <span class="text-verde-esperanza">Centros y Horarios</span>
+                    </h2>
+                    <p class="text-lg text-gris-suave max-w-2xl mx-auto">
+                        Conoce nuestras instalaciones, horarios de atención y datos de contacto para que puedas acceder a nuestros servicios.
+                    </p>
+                </div>
+
+                <div class="centros-grid">
+                    <article class="centro-card reveal-on-scroll">
+                        <figure class="centro-card__media">
+                            <img src="/images/equipo-kine.png"
+                                 alt="Equipo del CESFAM San Esteban recibiendo a vecinas y vecinos"
+                                 loading="lazy">
+                        </figure>
+                        <div class="centro-card__content">
+                            <span class="centro-card__tag centro-card__tag--primary">CESFAM</span>
+                            <h3 class="centro-card__title">CESFAM San Esteban</h3>
+                            <p class="centro-card__excerpt">
+                                Atención integral con enfoque preventivo, familiar y comunitario en el corazón de la comuna.
+                            </p>
+                            <ul class="centro-card__meta">
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm0-9a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Av. Libertador Bernardo O'Higgins 123, San Esteban</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h2l3 7-3 1 1 4h4l1-4-3-1 3-7h2a2 2 0 012 2v4"></path>
+                                        </svg>
+                                    </span>
+                                    <span>+56 34 249 1234</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Medicina general, pediatría, odontología, kinesiología.</span>
+                                </li>
+                            </ul>
+                            <div class="centro-card__footer">
+                                <span class="centro-card__schedule">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Lun a Vie: 08:00 - 17:00
+                                </span>
+                                <div class="centro-card__actions">
+                                    <a href="https://maps.google.com/?q=CESFAM+San+Esteban"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="centro-card__btn centro-card__btn--primary"
+                                       aria-label="Ver CESFAM San Esteban en el mapa">
+                                        Ver en mapa
+                                    </a>
+                                    <a href="tel:+56342491234"
+                                       class="centro-card__btn centro-card__btn--secondary"
+                                       aria-label="Llamar al CESFAM San Esteban">
+                                        Llamar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="centro-card reveal-on-scroll">
+                        <figure class="centro-card__media">
+                            <img src="/images/centro-posta-rio-colorado.png"
+                                 alt="Posta Río Colorado rodeada de montañas y vegetación"
+                                 loading="lazy">
+                        </figure>
+                        <div class="centro-card__content">
+                            <span class="centro-card__tag centro-card__tag--rural">Posta Rural</span>
+                            <h3 class="centro-card__title">Posta Río Colorado</h3>
+                            <p class="centro-card__excerpt">
+                                Atención cercana para sectores altos con rondas médicas y apoyo comunitario itinerante.
+                            </p>
+                            <ul class="centro-card__meta">
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm0-9a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Ruta Internacional s/n, sector Río Colorado</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h2l3 7-3 1 1 4h4l1-4-3-1 3-7h2a2 2 0 012 2v4"></path>
+                                        </svg>
+                                    </span>
+                                    <span>+56 34 249 9805</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Controles crónicos, vacunatorio móvil, visitas domiciliarias.</span>
+                                </li>
+                            </ul>
+                            <div class="centro-card__footer">
+                                <span class="centro-card__schedule">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Mar y Jue: 09:30 - 16:30
+                                </span>
+                                <div class="centro-card__actions">
+                                    <a href="https://maps.google.com/?q=Posta+Rio+Colorado+San+Esteban"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="centro-card__btn centro-card__btn--primary"
+                                       aria-label="Ver Posta Río Colorado en el mapa">
+                                        Ver en mapa
+                                    </a>
+                                    <a href="tel:+56342499805"
+                                       class="centro-card__btn centro-card__btn--secondary"
+                                       aria-label="Llamar a la Posta Río Colorado">
+                                        Llamar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article> 
+
+                    <article class="centro-card reveal-on-scroll">
+                        <figure class="centro-card__media">
+                            <img src="/images/centro-los-chacayes.png"
+                                 alt="Profesionales de salud guiando ejercicios de rehabilitación en Los Chacayes"
+                                 loading="lazy">
+                        </figure>
+                        <div class="centro-card__content">
+                            <span class="centro-card__tag centro-card__tag--support">Centro Comunitario</span>
+                            <h3 class="centro-card__title">Centro Comunitario Los Chacayes</h3>
+                            <p class="centro-card__excerpt">
+                                Espacio de rehabilitación integral y talleres de autocuidado para familias y personas cuidadoras.
+                            </p>
+                            <ul class="centro-card__meta">
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm0-9a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Camino Los Chacayes Km 4, San Esteban</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h2l3 7-3 1 1 4h4l1-4-3-1 3-7h2a2 2 0 012 2v4"></path>
+                                        </svg>
+                                    </span>
+                                    <span>+56 34 249 9020</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Rehabilitación kinésica, apoyo psicosocial y talleres arteterapéuticos.</span>
+                                </li>
+                            </ul>
+                            <div class="centro-card__footer">
+                                <span class="centro-card__schedule">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Lun a Vie: 09:00 - 18:00
+                                </span>
+                                <div class="centro-card__actions">
+                                    <a href="https://maps.google.com/?q=Los+Chacayes+San+Esteban"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="centro-card__btn centro-card__btn--primary"
+                                       aria-label="Ver Centro Comunitario Los Chacayes en el mapa">
+                                        Ver en mapa
+                                    </a>
+                                    <a href="tel:+56342499020"
+                                       class="centro-card__btn centro-card__btn--secondary"
+                                       aria-label="Llamar al Centro Comunitario Los Chacayes">
+                                        Llamar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="centro-card reveal-on-scroll">
+                        <figure class="centro-card__media">
+                            <img src="/images/centro-urgencias.png"
+                                 alt="Equipo de urgencia preparando ambulancia frente al servicio SAPU"
+                                 loading="lazy">
+                        </figure>
+                        <div class="centro-card__content">
+                            <span class="centro-card__tag centro-card__tag--emergency">SAPU 24/7</span>
+                            <h3 class="centro-card__title">Servicio de Urgencia Municipal</h3>
+                            <p class="centro-card__excerpt">
+                                Respuesta inmediata para urgencias médicas y coordinación con red SAMU metropolitana.
+                            </p>
+                            <ul class="centro-card__meta">
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm0-9a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Av. Libertador Bernardo O'Higgins 321, San Esteban</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h2l3 7-3 1 1 4h4l1-4-3-1 3-7h2a2 2 0 012 2v4"></path>
+                                        </svg>
+                                    </span>
+                                    <span>+56 34 249 5678</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Atención de urgencias, estabilización y coordinación de traslados.</span>
+                                </li>
+                            </ul>
+                            <div class="centro-card__footer">
+                                <span class="centro-card__schedule centro-card__schedule--alert">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Disponible 24 horas / 7 días
+                                </span>
+                                <div class="centro-card__actions">
+                                    <a href="https://maps.google.com/?q=Servicio+de+Urgencia+San+Esteban"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="centro-card__btn centro-card__btn--primary"
+                                       aria-label="Ver Servicio de Urgencia Municipal en el mapa">
+                                        Ver en mapa
+                                    </a>
+                                    <a href="tel:131"
+                                       class="centro-card__btn centro-card__btn--secondary"
+                                       aria-label="Llamar al servicio de urgencias 131">
+                                        Llamar 131
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="centro-card reveal-on-scroll">
+                        <figure class="centro-card__media">
+                            <img src="/images/centro-farmacia.png"
+                                 alt="Farmacia comunal entregando medicamentos a un adulto mayor"
+                                 loading="lazy">
+                        </figure>
+                        <div class="centro-card__content">
+                            <span class="centro-card__tag centro-card__tag--pharmacy">Farmacia</span>
+                            <h3 class="centro-card__title">Farmacia Comunal</h3>
+                            <p class="centro-card__excerpt">
+                                Medicamentos a precio justo, orientación farmacéutica y entrega coordinada con el CESFAM.
+                            </p>
+                            <ul class="centro-card__meta">
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm0-9a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Calle Manuel Rodríguez 456, San Esteban</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h2l3 7-3 1 1 4h4l1-4-3-1 3-7h2a2 2 0 012 2v4"></path>
+                                        </svg>
+                                    </span>
+                                    <span>+56 34 249 9012</span>
+                                </li>
+                                <li>
+                                    <span class="centro-card__meta-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Recetas crónicas, orientación farmacéutica y entrega a domicilio para adultos mayores.</span>
+                                </li>
+                            </ul>
+                            <div class="centro-card__footer">
+                                <span class="centro-card__schedule">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Lun a Vie: 08:30 - 18:00
+                                </span>
+                                <div class="centro-card__actions">
+                                    <a href="https://maps.google.com/?q=Farmacia+Comunal+San+Esteban"
+                                       target="_blank" rel="noopener noreferrer"
+                                       class="centro-card__btn centro-card__btn--primary"
+                                       aria-label="Ver Farmacia Comunal en el mapa">
+                                        Ver en mapa
+                                    </a>
+                                    <a href="tel:+56342499012"
+                                       class="centro-card__btn centro-card__btn--secondary"
+                                       aria-label="Llamar a la Farmacia Comunal">
+                                        Llamar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ayuda" class="relative py-24 overflow-hidden bg-gradient-to-b from-white via-cielo-suave/60 to-white">
+            <div class="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.18),_transparent_65%)]"></div>
+            <div class="absolute -left-24 top-32 hidden h-64 w-64 rounded-full bg-azul-vital/10 blur-3xl lg:block"></div>
+            <div class="absolute -right-20 bottom-24 hidden h-72 w-72 rounded-full bg-verde-esperanza/10 blur-3xl xl:block"></div>
+
+            <div class="relative container mx-auto px-4 lg:px-8">
+                <div class="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+                    <div class="space-y-6">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-azul-vital/10 px-4 py-2 text-sm font-semibold text-azul-vital">
+                            <span class="h-2 w-2 rounded-full bg-verde-esperanza animate-pulse" aria-hidden="true"></span>
+                            Trámites y Preguntas Frecuentes
+                        </span>
+                        <h2 class="text-3xl font-bold text-gris-marino md:text-4xl lg:text-5xl">
+                            Resolvemos tus dudas <span class="text-azul-vital">en un solo lugar</span>
+                        </h2>
+                        <p class="max-w-2xl text-lg text-gris-suave">
+                            Consulta los trámites más importantes del Portal Pacientes y recibe orientación clara sobre cómo registrarte, agendar tus controles o solicitar ayuda rápida.
+                        </p>
+
+                        <div class="faq-search">
+                            <label for="faq-search" class="sr-only">Buscar trámites o preguntas</label>
+                            <div class="faq-search__field">
+                                <span class="faq-search__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m1.35-4.65a6 6 0 11-12 0 6 6 0 0112 0z"></path>
+                                    </svg>
+                                </span>
+                                <input id="faq-search" type="search" autocomplete="off" placeholder="Buscar por trámite, palabra clave o tema" />
+                            </div>
+                            <div class="faq-search__chips" role="list">
+                                <button type="button" class="faq-chip" data-faq-chip="registro">Registro</button>
+                                <button type="button" class="faq-chip" data-faq-chip="agenda">Agenda</button>
+                                <button type="button" class="faq-chip" data-faq-chip="exámenes">Exámenes</button>
+                                <button type="button" class="faq-chip" data-faq-chip="soporte">Soporte</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="faq-aside reveal-on-scroll" aria-label="Ayuda personalizada">
+                        <div class="faq-aside__body">
+                            <h3 class="faq-aside__title">¿Necesitas asistencia directa?</h3>
+                            <p class="faq-aside__subtitle">Equipo de ayuda municipal disponible de lunes a viernes.</p>
+                            <ul class="faq-aside__list">
+                                <li>
+                                    <span class="faq-aside__list-icon" aria-hidden="true">💬</span>
+                                    <span>Escríbenos por WhatsApp <strong>+56 9 1234 5678</strong></span>
+                                </li>
+                                <li>
+                                    <span class="faq-aside__list-icon" aria-hidden="true">☎️</span>
+                                    <span>Call center salud comunal <strong>+56 34 249 1200</strong></span>
+                                </li>
+                                <li>
+                                    <span class="faq-aside__list-icon" aria-hidden="true">📧</span>
+                                    <span>Correo soporte: <strong>ayuda@cesfamsanesteban.cl</strong></span>
+                                </li>
+                            </ul>
+                            <a href="#contacto" class="faq-aside__cta" aria-label="Ir a formulario de contacto">Solicitar acompañamiento</a>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="mt-16 space-y-4" id="faq-accordion" role="list">
+                    <article class="faq-card reveal-on-scroll" data-keywords="registro cuenta portal contraseña ayuda acceso soporte">
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-1" aria-expanded="false" aria-controls="faq-panel-1">
+                            <span class="faq-card__icon" aria-hidden="true">🆕</span>
+                            <span class="faq-card__title">¿Cómo me registro por primera vez en el Portal Pacientes?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-1" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-1">
+                            <p>
+                                Ingresa a <a href="https://pacientes.cesfamsanesteban.cl" class="faq-link">pacientes.cesfamsanesteban.cl</a> y selecciona <em>Crear cuenta</em>. Completa tu RUT, correo y número de teléfono; recibirás un código SMS para validar la cuenta. Si necesitas apoyo presencial, puedes solicitarlo en el CESFAM o en los puntos digitales comunitarios.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Ver instructivo paso a paso</a></li>
+                                <li><a href="#" class="faq-link">Requisitos para registro</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="faq-card reveal-on-scroll" data-keywords="agenda hora médica turno cita portal salud"> 
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-2" aria-expanded="false" aria-controls="faq-panel-2">
+                            <span class="faq-card__icon" aria-hidden="true">🗓️</span>
+                            <span class="faq-card__title">¿Cómo agendo, reprogramo o cancelo una hora médica?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-2" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-2">
+                            <p>
+                                En la sección <strong>Mis citas</strong> podrás agendar controles médicos, odontológicos o de especialidad. También puedes reprogramar hasta 24 horas antes o liberar la hora para otro vecino. Recibirás confirmación por correo y recordatorios automáticos.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Ver disponibilidad por centro</a></li>
+                                <li><a href="#" class="faq-link">Campañas de control preventivo vigentes</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="faq-card reveal-on-scroll" data-keywords="exámenes resultados laboratorio laboratorio pdf descargar"> 
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-3" aria-expanded="false" aria-controls="faq-panel-3">
+                            <span class="faq-card__icon" aria-hidden="true">🧪</span>
+                            <span class="faq-card__title">¿Dónde consulto los resultados de mis exámenes?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-3" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-3">
+                            <p>
+                                Accede a <strong>Mis Exámenes</strong> para revisar informes de laboratorio, radiografías y resultados de imagen. Puedes descargarlos en PDF, compartirlos con tu profesional tratante o agendar una teleconsulta para revisarlos en detalle.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Descargar resultados históricos</a></li>
+                                <li><a href="#" class="faq-link">Solicitar explicación con un profesional</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="faq-card reveal-on-scroll" data-keywords="contraseña seguridad cuenta acceso recuperacion soporte"> 
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-4" aria-expanded="false" aria-controls="faq-panel-4">
+                            <span class="faq-card__icon" aria-hidden="true">🔐</span>
+                            <span class="faq-card__title">Olvidé mi contraseña, ¿cómo la recupero?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-4" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-4">
+                            <p>
+                                En la pantalla de acceso selecciona <strong>¿Olvidaste tu contraseña?</strong>. Ingresa tu RUT y recibirás un enlace temporal al correo registrado. Si no encuentras el mensaje en tu bandeja, revisa spam o comunícate con nuestra mesa de ayuda telefónica.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Recuperar contraseña ahora</a></li>
+                                <li><a href="#" class="faq-link">Actualizar correo de contacto</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="faq-card reveal-on-scroll" data-keywords="seguridad datos privacidad ley protección confidencialidad"> 
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-5" aria-expanded="false" aria-controls="faq-panel-5">
+                            <span class="faq-card__icon" aria-hidden="true">🛡️</span>
+                            <span class="faq-card__title">¿Cómo protegemos tus datos personales en el portal?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-5" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-5">
+                            <p>
+                                Utilizamos encriptación SSL/TLS, autenticación de doble factor para funcionarios y monitoreo permanente. Cumplimos la Ley 19.628 y las directrices del Ministerio de Salud. Nunca compartimos tus datos con terceros sin autorización.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Revisar política de privacidad</a></li>
+                                <li><a href="#" class="faq-link">Solicitar descarga de datos personales</a></li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="faq-card reveal-on-scroll" data-keywords="chat soporte ayuda contacto emergencia asistencia"> 
+                        <button type="button" class="faq-card__trigger" id="faq-trigger-6" aria-expanded="false" aria-controls="faq-panel-6">
+                            <span class="faq-card__icon" aria-hidden="true">🤝</span>
+                            <span class="faq-card__title">¿Dónde recibo ayuda si tengo un problema técnico o duda médica?</span>
+                            <span class="faq-card__chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="faq-panel-6" class="faq-card__panel hidden" role="region" aria-labelledby="faq-trigger-6">
+                            <p>
+                                Puedes contactar al equipo digital por chat integrado, WhatsApp o llamando al call center. Para dudas clínicas, agenda una teleorientación o solicita que te devuelvan la llamada desde tu centro de salud.
+                            </p>
+                            <ul class="faq-panel__actions">
+                                <li><a href="#" class="faq-link">Abrir chat con soporte</a></li>
+                                <li><a href="#" class="faq-link">Agendar teleorientación</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-gris-suave">¿Aún necesitas ayuda? <a href="mailto:ayuda@cesfamsanesteban.cl" class="faq-link">Escríbenos y te responderemos en menos de 24 horas</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer relative overflow-hidden bg-gradient-to-b from-gris-marino via-[#0f2743] to-[#091524] text-white">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute -top-20 left-10 h-40 w-40 rounded-full bg-azul-vital/30 blur-3xl"></div>
+            <div class="absolute right-20 bottom-10 h-52 w-52 rounded-full bg-verde-esperanza/20 blur-3xl"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.16),_transparent_60%)]"></div>
+        </div>
+
+        <div class="footer__container relative mx-auto grid max-w-6xl gap-12 px-4 py-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-8">
+            <div class="footer__cta reveal-on-scroll">
+                <span class="footer__badge">
+                    <span class="footer__badge-dot" aria-hidden="true"></span>
+                    Estamos para escucharte
+                </span>
+                <h2 class="footer__title">Conversemos tu atención en Salud San Esteban</h2>
+                <p class="footer__subtitle">Agenda controles, resuelve trámites y recibe orientación en minutos. Nuestro equipo digital acompaña cada paso de tu bienestar.</p>
+
+                <div class="footer__buttons">
+                    <a href="#ayuda" class="footer__btn footer__btn--primary" aria-label="Hablar con Salud San Esteban">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="footer__btn-icon" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h6m-3 8a9 9 0 110-18 9 9 0 010 18z"></path>
+                        </svg>
+                        Habla con nosotros
+                    </a>
+                    <a href="https://pacientes.cesfamsanesteban.cl" class="footer__btn footer__btn--ghost" aria-label="Ir al Portal Pacientes">
+                        Ir al Portal Pacientes
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer__content reveal-on-scroll">
+                <div class="footer__grid">
+                    <div>
+                        <h3 class="footer__heading">Navega</h3>
+                        <ul class="footer__links" role="list">
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#noticias">Noticias y Campañas</a></li>
+                            <li><a href="#centros">Centros de Salud</a></li>
+                            <li><a href="#ayuda">Trámites y Ayuda</a></li>
+                            <li><a href="https://pacientes.cesfamsanesteban.cl" target="_blank" rel="noopener">Portal Pacientes</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__heading">Horarios</h3>
+                        <ul class="footer__info" role="list">
+                            <li>
+                                <span>Lunes a Viernes</span>
+                                <span>08:00 a 18:00 hrs</span>
+                            </li>
+                            <li>
+                                <span>Sábado</span>
+                                <span>Controles programados</span>
+                            </li>
+                            <li>
+                                <span>Urgencias</span>
+                                <span>24/7 SAPU Municipal</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__heading">Conecta</h3>
+                        <ul class="footer__social" role="list">
+                            <li><a href="#" aria-label="Facebook Salud San Esteban">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2 6.35 2 1.87 6.48 1.87 12.07c0 4.86 3.44 8.9 7.94 9.79v-6.92H7.55v-2.87h2.26V9.41c0-2.24 1.33-3.48 3.36-3.48.97 0 1.99.18 1.99.18v2.18h-1.12c-1.1 0-1.45.69-1.45 1.4v1.68h2.47l-.39 2.87h-2.08v6.92c4.5-.89 7.94-4.93 7.94-9.79z"/></svg>
+                            </a></li>
+                            <li><a href="#" aria-label="Instagram Salud San Esteban">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.25-1.68 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.25-.15-4.77-1.68-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.41 3.92 3.93 2.4 7.18 2.25 8.45 2.19 8.83 2.16 12 2.16m0-2.16C8.74 0 8.33.01 7.05.06 2.72.26.26 2.72.06 7.05.01 8.33 0 8.74 0 12s.01 3.67.06 4.95c.2 4.33 2.66 6.79 6.99 6.99 1.28.05 1.69.06 4.95.06s3.67-.01 4.95-.06c4.33-.2 6.79-2.66 6.99-6.99.05-1.28.06-1.69.06-4.95s-.01-3.67-.06-4.95C23.74 2.72 21.28.26 16.95.06 15.67.01 15.26 0 12 0z"/></svg>
+                            </a></li>
+                            <li><a href="#" aria-label="WhatsApp Salud San Esteban">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.05 23.8l1.7-6.2C.71 16.86.16 14.8.16 12.7.16 5.7 5.84 0 12.82 0 19.85 0 25.5 5.65 25.5 12.63c0 7-5.65 12.66-12.63 12.66-2.1 0-4.17-.55-6.06-1.6L.05 23.8zm7.04-2.36c1.7 1 3.32 1.6 5.43 1.6 6.29 0 11.4-5.11 11.4-11.4 0-6.29-5.11-11.4-11.4-11.4-6.29 0-11.4 5.11-11.4 11.4 0 2.11.6 3.73 1.72 5.46l-1.03 3.7 3.28-.86zM19.3 14.8c-.1-.16-.37-.26-.77-.45-.4-.2-2.25-1.12-2.59-1.25-.34-.13-.6-.2-.85.26-.2.33-.77 1.13-.95 1.36-.17.22-.35.24-.65.08-.3-.15-1.26-.51-2.4-1.63-1-.9-1.68-2-1.87-2.3-.2-.3-.02-.5.15-.67.15-.16.35-.4.52-.6.17-.2.22-.35.33-.58.1-.22.05-.4-.03-.58-.08-.16-.74-1.8-1.01-2.46-.27-.66-.54-.57-.73-.58l-.83-.01c-.28 0-.74.1-1.1.48-.37.37-1.44 1.4-1.44 3.4 0 1.99 1.47 3.92 1.68 4.2.2.27 2.9 4.43 7.12 6.05.99.35 1.75.56 2.35.72.99.24 1.89.21 2.6.13.79-.09 2.4-.98 2.74-1.92.34-.94.34-1.74.24-1.9z"/></svg>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" aria-hidden="true">
+                            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M24 6l-5.5 5.5A10.5 10.5 0 0014 29.5l10 10 10-10A10.5 10.5 0 0030 11.5L24 6z"/>
+                        </svg>
+                        <div>
+                            <p class="footer__logo-title">Salud Municipal</p>
+                            <p class="footer__logo-subtitle">San Esteban</p>
+                        </div>
+                    </div>
+                    <p class="footer__claim">Conectando salud y comunidad con tecnología cercana.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>© 2025 Salud Municipal de San Esteban. Todos los derechos reservados.</p>
+            <div class="footer__bottom-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos de uso</a>
+                <a href="#">Transparencia</a>
+            </div>
+        </div>
+
+        <div class="footer-chat" role="dialog" aria-live="polite">
+            <button type="button" class="footer-chat__button" aria-haspopup="true" aria-controls="footer-chat-panel" aria-expanded="false">
+                <span class="footer-chat__bubble" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8-.99 0-1.94-.15-2.82-.43L6 20l.58-2.32C4.98 16.42 4 14.31 4 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </span>
+                <div class="footer-chat__label">
+                    <strong>¿Tienes dudas?</strong>
+                    <span>Estoy aquí para ayudarte 👩‍⚕️</span>
+                </div>
+            </button>
+            <div id="footer-chat-panel" class="footer-chat__panel hidden" role="region" aria-label="Chat con Salud San Esteban">
+                <p class="footer-chat__panel-title">Hola, soy Carla de Salud San Esteban</p>
+                <p class="footer-chat__panel-text">Cuéntame qué necesitas y te guiamos con tus trámites o consultas médicas.</p>
+                <div class="footer-chat__panel-actions">
+                    <a href="https://wa.me/56912345678" target="_blank" rel="noopener" class="footer-chat__panel-btn">Escribir por WhatsApp</a>
+                    <a href="#ayuda" class="footer-chat__panel-link">Ver ayuda en línea</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
