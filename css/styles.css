@@ -40,29 +40,31 @@ body.is-locked {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 6px 26px rgba(15, 23, 42, 0.08);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    padding: 0.75rem 0;
+    padding: 0.85rem 0;
 }
 
 /* Efecto al hacer scroll */
 .navbar--scrolled {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 18px 46px rgba(15, 23, 42, 0.18);
     background: rgba(255, 255, 255, 0.98) !important;
-    padding: 0.5rem 0;
+    border-bottom-color: rgba(15, 23, 42, 0.16);
+    padding: 0.55rem 0;
 }
 
 .navbar__container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
 }
 
 /* Logo y marca */
@@ -70,11 +72,11 @@ body.is-locked {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    color: #1E293B;
+    color: #0F172A;
     text-decoration: none;
     transition: transform 0.3s ease;
-    padding: 0.25rem 0.5rem;
-    border-radius: 8px;
+    padding: 0.35rem 0.6rem;
+    border-radius: 10px;
 }
 
 .navbar__brand:hover {
@@ -109,23 +111,23 @@ body.is-locked {
 
 .navbar__brand-title {
     font-weight: 700;
-    font-size: 1.3rem;
-    color: #1E293B;
+    font-size: 1.35rem;
+    color: #0F172A;
     letter-spacing: -0.01em;
     margin: 0;
 }
 
 .navbar__brand-subtitle {
-    font-size: 0.8rem;
-    color: #64748B;
-    font-weight: 500;
+    font-size: 0.82rem;
+    color: #475569;
+    font-weight: 600;
     letter-spacing: 0.02em;
 }
 
 /* Menú de navegación */
 .navbar__menu {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -133,77 +135,104 @@ body.is-locked {
 
 .navbar__link {
     position: relative;
-    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #0F172A;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
     text-decoration: none;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 0.75rem 0.5rem;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+}
+
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    height: 3px;
+    background: linear-gradient(135deg, #0077CC 0%, #0EA5E9 100%);
+    border-radius: 9999px;
+    opacity: 0;
+    transform: scaleX(0.4);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
 }
 
 .navbar__link:hover,
 .navbar__link:focus-visible {
-    color: #0077CC;
-    background: rgba(0, 119, 204, 0.05);
+    color: #005A9C;
+    background: rgba(14, 165, 233, 0.08);
+}
+
+.navbar__link:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.45);
+    outline-offset: 4px;
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+    opacity: 1;
+    transform: scaleX(1);
 }
 
 .navbar__link--active {
-    color: #0077CC;
+    color: #005A9C;
     font-weight: 700;
 }
 
 .navbar__link--active::after {
-    content: '';
-    position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: #0077CC;
-    border-radius: 50%;
+    opacity: 1;
+    transform: scaleX(1);
 }
 
 /* Botones de acción */
 .navbar__actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-left: 2rem;
+    gap: 1.25rem;
+    margin-left: 2.25rem;
 }
 
 .navbar__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
+    gap: 0.55rem;
+    padding: 0.75rem 1.65rem;
+    border-radius: 10px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     border: none;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
 }
 
 .navbar__btn--primary {
-    background: linear-gradient(135deg, #0077CC 0%, #005A9C 100%);
+    background: linear-gradient(135deg, #0F9BD7 0%, #005A9C 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 119, 204, 0.25);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.28);
 }
 
 .navbar__btn--primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 119, 204, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(14, 165, 233, 0.35);
 }
 
 .navbar__btn--primary:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 119, 204, 0.25);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 /* Menú móvil */
@@ -218,6 +247,8 @@ body.is-locked {
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: all 0.3s ease;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
 }
 
 .navbar__toggle:hover {
@@ -263,8 +294,8 @@ body.is-locked {
     width: 100%;
     height: 100vh;
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     z-index: 999;
     padding: 5rem 1.5rem 2rem;
     transform: translateX(100%);
@@ -305,12 +336,19 @@ body.is-locked {
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.2s ease;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .navbar__mobile-link:hover,
 .navbar__mobile-link:focus-visible {
-    background: rgba(0, 119, 204, 0.05);
-    color: #0077CC;
+    background: rgba(14, 165, 233, 0.12);
+    color: #005A9C;
+}
+
+.navbar__mobile-link:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.35);
+    outline-offset: 4px;
 }
 
 .navbar__mobile-cta {
@@ -319,21 +357,28 @@ body.is-locked {
     justify-content: center;
     gap: 0.5rem;
     width: 100%;
-    padding: 0.85rem 1.5rem;
+    padding: 0.95rem 1.5rem;
     margin-top: 1.5rem;
-    background: linear-gradient(135deg, #0077CC 0%, #005A9C 100%);
+    background: linear-gradient(135deg, #0F9BD7 0%, #005A9C 100%);
     color: white;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 119, 204, 0.25);
+    border-radius: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.28);
+    outline: 2px solid transparent;
+    outline-offset: 3px;
 }
 
 .navbar__mobile-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 119, 204, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(14, 165, 233, 0.35);
+}
+
+.navbar__mobile-cta:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.45);
+    outline-offset: 3px;
 }
 
 /* Estilos responsivos */
@@ -341,19 +386,19 @@ body.is-locked {
     .navbar__desktop {
         display: none;
     }
-    
+
     .navbar__toggle {
         display: flex;
     }
-    
+
     .navbar__container {
-        padding: 0 1.5rem;
+        padding: 0 1.75rem;
     }
 }
 
 @media (max-width: 768px) {
     .navbar__container {
-        padding: 0 1.25rem;
+        padding: 0 1.35rem;
     }
     
     .navbar__brand-title {
@@ -365,7 +410,7 @@ body.is-locked {
     }
     
     .navbar__btn {
-        padding: 0.6rem 1.25rem;
+        padding: 0.65rem 1.35rem;
         font-size: 0.9rem;
     }
 }
@@ -394,12 +439,33 @@ body.is-locked {
     }
     
     .navbar__btn {
-        padding: 0.5rem 1rem;
+        padding: 0.55rem 1.1rem;
         font-size: 0.85rem;
     }
     
     .navbar__mobile {
         padding: 4.5rem 1rem 2rem;
+    }
+}
+
+.navbar__brand:focus-visible,
+.navbar__btn:focus-visible,
+.navbar__toggle:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.45);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .navbar__btn,
+    .navbar__link,
+    .navbar__mobile,
+    .navbar__mobile-cta,
+    .navbar__toggle {
+        transition-duration: 0.01ms !important;
+        transition-timing-function: linear !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
 
